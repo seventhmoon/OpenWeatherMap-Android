@@ -29,19 +29,10 @@ public class MainActivityFragment extends Fragment {
         final TextView textViewMessage = (TextView) rootView.findViewById(R.id.textview_message);
 
         OpenWeatherMapApiHelper helper = new OpenWeatherMapApiHelper(getContext());
-        helper.getWeather(22.25, 114.1667, new Response.Listener<WeatherResponseModel>() {
-            @Override
-            public void onResponse(WeatherResponseModel response) {
-                WeatherRecord record = response.getWeatherRecord();
-                textViewMessage.setText("Temperature: " + record.getTemperature() + "\nHumidity: " + record.getHumidity());
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                textViewMessage.setText(error.toString());
-            }
-        });
+        helper.getWeather(22.25, 114.1667,
+                response -> textViewMessage.setText("Temperature: " + response.getWeatherRecord().getTemperature() + "\nHumidity: " + response.getWeatherRecord().getHumidity()),
+                error -> textViewMessage.setText(error.toString())
+        );
 
         return rootView;
     }
