@@ -26,7 +26,7 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        final TextView textViewMessage = (TextView) rootView.findViewById(R.id.textview_message);
+        final TextView textViewMessage = rootView.findViewById(R.id.textview_message);
 
         OpenWeatherMapApiHelper helper = new OpenWeatherMapApiHelper(getContext());
         helper.getWeather(22.25, 114.1667,
