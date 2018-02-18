@@ -40,6 +40,11 @@ public class OpenWeatherMapApiHelper {
         mAppId = context.getResources().getString(R.string.api_key);
     }
 
+    public OpenWeatherMapApiHelper(@NonNull Context context, @NonNull String appId){
+        mRequestQueue = Volley.newRequestQueue(context);
+        mAppId = appId;
+    }
+
     public OpenWeatherMapApiHelper(@NonNull RequestQueue requestQueue, @NonNull String appId) {
         mRequestQueue = requestQueue;
         mAppId = appId;
